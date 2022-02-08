@@ -6,7 +6,33 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+hourlyRate: any;
+hoursWorked: any;
+pay: any;
+tax: any
+overtimePay: any;
+totalPay: any;
+  // constructor() {}
 
-  constructor() {}
+  btnClicked(){
+  
+  
+    if (this.hoursWorked <= 40)
+    {
+      this.pay = this.hourlyRate * this.hoursWorked
+    }
+    else{
+      alert("overtime applies")
+
+    this.overtimePay = (this.hoursWorked - 40) * this.hourlyRate*1.5 
+    this.pay = this.overtimePay+ 40 * this.hourlyRate
+    }
+    this.totalPay=this.pay + this.overtimePay
+    this.calcTax()
+  }
+
+  calcTax(){
+    this.tax = this.pay *0.8
+  }
 
 }
